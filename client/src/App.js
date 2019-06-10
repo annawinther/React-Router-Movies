@@ -29,7 +29,7 @@ export default class App extends Component {
             component={MovieList}
           />
           <Route
-          path='/:id'
+          path='/movies/:id'
           component={Movie}
           />
         </div>

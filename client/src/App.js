@@ -21,10 +21,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <Router>
         <div>
           <SavedList list={this.state.savedList} />
           <Route
+            exact
             path='/'
             component={MovieList}
           />
@@ -33,7 +33,6 @@ export default class App extends Component {
           component={Movie}
           />
         </div>
-      </Router>
     );
   }
 }

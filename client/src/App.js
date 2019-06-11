@@ -13,10 +13,13 @@ export default class App extends Component {
     };
   }
 
-  addToSavedList = movie => {
+  addToSavedList = movieToSave => {
     const savedList = this.state.savedList;
-    savedList.push(movie);
-    this.setState({ savedList });
+    const alreadyThere = savedList.find(movie => movieToSave.id === movie.id)
+    if (!alreadyThere){
+      savedList.push(movieToSave);
+      this.setState({ savedList });
+    } else alert("Already saved");
   };
 
   render() {
@@ -30,7 +33,7 @@ export default class App extends Component {
           />
           <Route
           path='/movies/:id'
-          component={Movie}
+          render={props => <Movie {...props} addToSavedList={this.addToSavedList} />}
           />
         </div>
     );
